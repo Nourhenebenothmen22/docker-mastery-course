@@ -18,7 +18,6 @@ export const metadata: Metadata = {
     'Docker labs',
     'Docker for beginners',
     'Docker production',
-    'Docker Next.js course',
     'containerization',
     'devops',
   ],
