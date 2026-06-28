@@ -10,7 +10,7 @@ function getSiteUrl(): string {
 export const siteConfig: SiteConfig = {
   name: 'Docker Mastery',
   description:
-    'Master Docker from fundamentals to real-world deployment. Learn containers, images, Docker Compose, networking, volumes, and CI/CD with hands-on labs.',
+    'Master Docker from fundamentals to real-world production. Learn containers, images, Docker Compose, networking, volumes, and CI/CD with hands-on labs.',
   url: getSiteUrl(),
   author: {
     name: 'Nourhene Ben Othmen',
