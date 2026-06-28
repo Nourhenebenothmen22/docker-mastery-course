@@ -27,6 +27,7 @@ jobs:
       - run: npm run build
         env:
           DEPLOY_TARGET: github
+      - run: touch out/.nojekyll
       - uses: actions/configure-pages@v4
         with:
           static_site_generator: next
