@@ -1,4 +1,3 @@
-import Badge from '@/components/Badge';
 import DockerLogo from '@/components/DockerLogo';
 import DockerHeroBackground from '@/components/DockerHeroBackground';
 import GradientButton from '@/components/GradientButton';
@@ -23,12 +22,6 @@ export default function Hero() {
       <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 py-20 md:py-0 w-full">
         <div className="grid md:grid-cols-2 gap-10 md:gap-14 lg:gap-20 items-center">
           <div className="text-center md:text-left order-1 md:order-2">
-            <div className="flex justify-center md:justify-start mb-6">
-              <Badge>
-                Docker Course &bull; Roadmap &bull; Labs &bull; Deployment
-              </Badge>
-            </div>
-
             <h1 className="text-[clamp(2.25rem,5vw,4.5rem)] font-extrabold text-white mb-6 leading-[1.1] tracking-tight text-balance">
               Master Docker{' '}
               <span className="gradient-text">From Zero to Deployment</span>
