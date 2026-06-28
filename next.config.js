@@ -1,18 +1,14 @@
 /** @type {import('next').NextConfig} */
-const REPO_NAME = 'docker-mastery-course';
-
 const isGithubPages = process.env.DEPLOY_TARGET === 'github';
-const basePath = isGithubPages ? `/${REPO_NAME}` : '';
-const assetPrefix = isGithubPages ? `/${REPO_NAME}/` : '';
+const repoName = 'docker-mastery-course';
 
 const nextConfig = {
   output: 'export',
-  basePath,
-  assetPrefix,
+  basePath: isGithubPages ? `/${repoName}` : '',
+  assetPrefix: isGithubPages ? `/${repoName}/` : '',
   images: {
     unoptimized: true,
   },
-  trailingSlash: true,
 };
 
 module.exports = nextConfig;
