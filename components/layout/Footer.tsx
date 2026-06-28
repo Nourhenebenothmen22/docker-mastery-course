@@ -13,10 +13,10 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-dark-900" role="contentinfo">
+    <footer className="border-t border-docker-500/10 bg-dark-900" role="contentinfo">
       <div className="container-custom px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
+          <div className="glass-blue rounded-xl p-6">
             <div className="flex items-center gap-2 mb-4">
               <DockerLogo size={32} />
               <span className="text-lg font-bold gradient-text">{siteConfig.name}</span>
@@ -27,7 +27,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div>
+          <div className="glass-blue rounded-xl p-6">
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {navLinks.map((link) => (
@@ -43,7 +43,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="glass-blue rounded-xl p-6">
             <h3 className="text-white font-semibold mb-4">Contact</h3>
             <p className="text-gray-400 text-sm mb-4">{siteConfig.author.name}</p>
             <div className="flex flex-wrap gap-3">
@@ -55,7 +55,7 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-10 h-10 rounded-lg bg-dark-700 text-gray-400 hover:text-docker-400 hover:bg-docker-500/10 border border-white/5 transition-all duration-200"
+                    className="flex items-center justify-center w-10 h-10 rounded-lg bg-dark-700 text-gray-400 hover:text-docker-400 hover:bg-docker-500/10 border border-docker-500/10 transition-all duration-200"
                     aria-label={`Visit ${link.label}`}
                   >
                     <Icon />
@@ -66,7 +66,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-10 pt-6 border-t border-docker-500/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-xs">&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
           <p className="text-gray-500 text-xs">
             Built with Next.js by{' '}
