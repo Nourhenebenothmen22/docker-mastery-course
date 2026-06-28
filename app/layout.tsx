@@ -60,8 +60,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/docker-logo.png',
-    apple: '/docker-logo.png',
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
   },
 };
 
