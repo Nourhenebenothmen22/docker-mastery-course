@@ -38,6 +38,7 @@ export default function DockerLogo({
         height={size}
         className="object-contain relative z-10 drop-shadow-lg"
         priority={priority}
+        sizes={`${size}px`}
       />
     </div>
   );
