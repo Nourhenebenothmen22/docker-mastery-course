@@ -128,8 +128,8 @@ docker-mastery/
 │   ├── commands.ts         # Commands data
 │   └── labs.ts             # Lab step definitions
 ├── public/
-│   ├── docker-logo.svg     # Docker logo
-│   └── docker-logo.png     # Docker logo (PNG fallback)
+│   ├── docker-logo.png     # Docker logo
+│   └── docker-logo.png     # Docker logo (SVG)
 ├── next.config.js          # Static export config
 ├── netlify.toml            # Netlify config
 ├── tailwind.config.ts      # Tailwind theme

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Hero from '@/components/shared/Hero';
 import SectionTitle from '@/components/shared/SectionTitle';
 import FeatureCard from '@/components/shared/FeatureCard';
+import WhyDockerCarousel from '@/components/shared/WhyDockerCarousel';
 import Container from '@/components/layout/Container';
 import {
   BoxIcon,
@@ -88,16 +89,10 @@ const coursePages: CourseCardItem[] = [
     icon: <CodeIcon className="w-8 h-8" />,
   },
   {
-    href: '/labs/corrected',
-    title: 'Corrected Lab',
-    description: 'Follow a step-by-step lab to containerize a Node.js app with full solutions.',
+    href: '/labs',
+    title: 'Docker Labs',
+    description: 'Hands-on labs: follow the corrected lab or test your skills with the practice lab.',
     icon: <CheckCircleIcon className="w-8 h-8" />,
-  },
-  {
-    href: '/labs/practice',
-    title: 'Practice Lab',
-    description: 'Test your Docker skills with an incomplete lab and debug real issues.',
-    icon: <EyeIcon className="w-8 h-8" />,
   },
   {
     href: '/deployment',
@@ -132,16 +127,8 @@ export default function HomePage() {
             title="Why Docker Matters"
             subtitle="Docker has transformed how modern applications are built, shipped, and deployed."
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((item, i) => (
-              <div key={i} className="glass-card p-6 flex flex-col items-start">
-                <div className="w-10 h-10 rounded-full bg-docker-500/20 flex items-center justify-center mb-4">
-                  <div className="w-3 h-3 rounded-full bg-docker-400" />
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
-              </div>
-            ))}
+          <div className="max-w-3xl mx-auto">
+            <WhyDockerCarousel benefits={benefits} />
           </div>
         </Container>
       </section>
