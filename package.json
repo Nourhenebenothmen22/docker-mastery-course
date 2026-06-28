@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "npx serve@latest out",
+    "start": "next start",
     "lint": "next lint",
     "deploy": "cross-env DEPLOY_TARGET=github next build && touch out/.nojekyll && gh-pages -d out"
   },
