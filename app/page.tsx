@@ -119,7 +119,7 @@ export default function HomePage() {
             title="Why Docker Matters"
             subtitle="Docker has transformed how modern applications are built, shipped, and deployed."
           />
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <WhyDockerCarousel benefits={benefits} />
           </div>
         </Container>
