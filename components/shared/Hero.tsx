@@ -2,6 +2,7 @@ import DockerLogo from '@/components/DockerLogo';
 import DockerHeroBackground from '@/components/DockerHeroBackground';
 import GradientButton from '@/components/GradientButton';
 import StatsCard from '@/components/StatsCard';
+import Badge from '@/components/Badge';
 import { heroStats } from '@/data/heroStats';
 import { ArrowRightIcon, CodeIcon } from '@/data/icons';
 
@@ -22,13 +23,17 @@ export default function Hero() {
       <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 pt-4 lg:pt-8 pb-12 lg:pb-16 w-full">
         <div className="grid lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-14 items-center">
           <div className="text-center lg:text-left order-1 lg:order-2">
-            <h1 className="text-[clamp(2rem,4vw,3.5rem)] font-extrabold text-white mb-4 leading-[1.15] tracking-tight text-balance">
+            <div className="flex justify-center lg:justify-start mb-6">
+              <Badge />
+            </div>
+
+            <h1 className="text-[clamp(1.75rem,4vw,3.25rem)] font-extrabold text-white mb-4 leading-[1.15] tracking-tight text-balance">
               Master Docker{' '}
               <span className="gradient-text">From Zero to Production</span>
             </h1>
 
             <p className="text-sm sm:text-base lg:text-lg text-gray-300/90 max-w-xl mb-8 leading-relaxed text-balance">
-              Learn Docker from fundamentals to real-world production with commands, labs, roadmap, and professional DevOps practices.
+              Learn Docker from fundamentals to real-world production workflows with commands, labs, roadmap, and professional DevOps practices.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3 mb-10">
@@ -40,7 +45,7 @@ export default function Hero() {
               </GradientButton>
             </div>
 
-            <div className="grid grid-cols-3 gap-3 max-w-md lg:max-w-sm">
+            <div className="grid grid-cols-3 gap-3 max-w-md lg:max-w-sm mx-auto lg:mx-0">
               {heroStats.map((stat) => (
                 <StatsCard key={stat.label} label={stat.label} value={stat.value} />
               ))}
