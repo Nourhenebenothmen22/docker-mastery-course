@@ -1,168 +1,118 @@
 'use client';
 
-import { useState, useCallback, useEffect, useRef } from 'react';
-import { cn } from '@/lib/utils';
-import { ArrowLeftIcon, ArrowRightIcon } from '@/data/icons';
+import { useState, useCallback } from 'react';
 import type { BenefitItem } from '@/types';
+import { ArrowLeftIcon, ArrowRightIcon } from '@/data/icons';
+import { cn } from '@/lib/utils';
 
 interface WhyDockerCarouselProps {
   benefits: BenefitItem[];
 }
 
-function getVisibleCount(): number {
-  if (typeof window === 'undefined') return 3;
-  if (window.innerWidth >= 1024) return 3;
-  if (window.innerWidth >= 768) return 2;
-  return 1;
-}
-
 export default function WhyDockerCarousel({ benefits }: WhyDockerCarouselProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-  const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const [current, setCurrent] = useState(0);
+  const max = Math.max(0, benefits.length - 1);
 
-  const maxIndex = Math.max(0, benefits.length - visibleCount);
+  const next = useCallback(() => {
+    setCurrent((prev) => (prev >= max ? 0 : prev + 1));
+  }, [max]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      const newCount = getVisibleCount();
-      setVisibleCount((prev) => {
-        if (prev !== newCount && currentIndex + newCount > benefits.length) {
-          setCurrentIndex(Math.max(0, benefits.length - newCount));
-        }
-        return newCount;
-      });
-    };
+  const prev = useCallback(() => {
+    setCurrent((prev) => (prev <= 0 ? max : prev - 1));
+  }, [max]);
 
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [benefits.length, currentIndex]);
+  const getVisibleBenefits = () => {
+    const items = [];
+    for (let i = 0; i < 3; i++) {
+      const idx = (current + i) % benefits.length;
+      items.push(benefits[idx]);
+    }
+    return items;
+  };
 
-  useEffect(() => {
-    if (isPaused) return;
-    autoPlayRef.current = setInterval(() => {
-      setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-    }, 5000);
-    return () => {
-      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-    };
-  }, [maxIndex, isPaused]);
-
-  const goTo = useCallback(
-    (index: number) => {
-      if (isTransitioning) return;
-      const clamped = Math.max(0, Math.min(index, maxIndex));
-      setIsTransitioning(true);
-      setCurrentIndex(clamped);
-      setTimeout(() => setIsTransitioning(false), 400);
-    },
-    [isTransitioning, maxIndex]
-  );
-
-  const goNext = useCallback(() => goTo(currentIndex + 1), [goTo, currentIndex]);
-  const goPrev = useCallback(() => goTo(currentIndex - 1), [goTo, currentIndex]);
-
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        goPrev();
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        goNext();
-      }
-    },
-    [goPrev, goNext]
-  );
-
-  const slidePercent = (100 / visibleCount) * currentIndex;
+  if (benefits.length === 0) return null;
 
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onKeyDown={handleKeyDown}
-      role="region"
-      aria-label="Why Docker matters, benefit carousel"
-      aria-roledescription="carousel"
-      tabIndex={0}
-    >
-      <div className="overflow-hidden rounded-xl" ref={trackRef}>
-        <div
-          className={cn(
-            'flex transition-transform duration-500 ease-in-out',
-            visibleCount === 1 ? 'gap-0' : 'gap-4'
-          )}
-          style={{ transform: `translateX(-${slidePercent}%)` }}
-        >
-          {benefits.map((item, i) => (
+    <div className="relative">
+      <div className="overflow-hidden">
+        <div className="hidden lg:grid lg:grid-cols-3 gap-6">
+          {getVisibleBenefits().map((item, i) => (
             <div
-              key={i}
-              className={cn(
-                'shrink-0',
-                visibleCount === 1 && 'w-full',
-                visibleCount === 2 && 'w-[calc(50%-8px)]',
-                visibleCount === 3 && 'w-[calc(33.333%-11px)]'
-              )}
-              role="group"
-              aria-roledescription="slide"
-              aria-label={`Benefit ${i + 1} of ${benefits.length}`}
+              key={`${item.title}-${i}`}
+              className="glass-card p-6 min-h-[200px] animate-fade-in"
             >
-              <div className="glass-card p-6 h-full flex flex-col">
-                <div className="w-12 h-12 rounded-full bg-docker-500/20 flex items-center justify-center mb-5 shrink-0">
-                  <div className="w-3.5 h-3.5 rounded-full bg-docker-400 animate-pulse" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed flex-1">{item.description}</p>
-              </div>
+              <h3 className="text-lg font-semibold text-white mb-3">{item.title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
+
+        <div className="hidden md:grid md:grid-cols-2 lg:hidden gap-6">
+          {benefits.slice(current, current + 2).map((item, i) => (
+            <div
+              key={`${item.title}-${i}`}
+              className="glass-card p-6 min-h-[200px] animate-fade-in"
+            >
+              <h3 className="text-lg font-semibold text-white mb-3">{item.title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+          {current + 2 > benefits.length && (
+            <div
+              key={`${benefits[0].title}-wrap`}
+              className="glass-card p-6 min-h-[200px] animate-fade-in"
+            >
+              <h3 className="text-lg font-semibold text-white mb-3">{benefits[0].title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">{benefits[0].description}</p>
+            </div>
+          )}
+        </div>
+
+        <div className="md:hidden">
+          <div className="glass-card p-6 min-h-[200px] animate-fade-in">
+            <h3 className="text-lg font-semibold text-white mb-3">{benefits[current].title}</h3>
+            <p className="text-gray-400 text-sm leading-relaxed">{benefits[current].description}</p>
+          </div>
+        </div>
       </div>
 
-      <button
-        onClick={goPrev}
-        disabled={currentIndex === 0}
-        className={cn(
-          'absolute -left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-dark-700 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:bg-docker-500/20 transition-all duration-200 z-10 focus:outline-none focus:ring-2 focus:ring-docker-500/50',
-          currentIndex === 0 && 'opacity-30 cursor-not-allowed'
-        )}
-        aria-label="Previous slide"
-      >
-        <ArrowLeftIcon className="w-5 h-5" />
-      </button>
+      <div className="flex items-center justify-center gap-4 mt-8">
+        <button
+          type="button"
+          onClick={prev}
+          className="flex items-center justify-center w-10 h-10 rounded-full glass-blue text-gray-400 hover:text-white hover:border-docker-500/40 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-docker-500/50"
+          aria-label="Previous slide"
+        >
+          <ArrowLeftIcon className="w-5 h-5" />
+        </button>
 
-      <button
-        onClick={goNext}
-        disabled={currentIndex >= maxIndex}
-        className={cn(
-          'absolute -right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-dark-700 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:bg-docker-500/20 transition-all duration-200 z-10 focus:outline-none focus:ring-2 focus:ring-docker-500/50',
-          currentIndex >= maxIndex && 'opacity-30 cursor-not-allowed'
-        )}
-        aria-label="Next slide"
-      >
-        <ArrowRightIcon className="w-5 h-5" />
-      </button>
+        <div className="flex items-center gap-2" role="tablist" aria-label="Slide indicators">
+          {benefits.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setCurrent(i)}
+              className={cn(
+                'w-2.5 h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-docker-500/50',
+                i === current
+                  ? 'bg-docker-500 w-6'
+                  : 'bg-dark-600 hover:bg-dark-500'
+              )}
+              role="tab"
+              aria-selected={i === current}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
 
-      <div className="flex items-center justify-center gap-2 mt-8" role="tablist" aria-label="Carousel indicators">
-        {Array.from({ length: maxIndex + 1 }).map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            className={cn(
-              'w-2.5 h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-docker-500/50',
-              i === currentIndex ? 'bg-docker-500 w-8' : 'bg-dark-600 hover:bg-dark-500'
-            )}
-            aria-label={`Go to slide ${i + 1}`}
-            aria-selected={i === currentIndex}
-            role="tab"
-          />
-        ))}
+        <button
+          type="button"
+          onClick={next}
+          className="flex items-center justify-center w-10 h-10 rounded-full glass-blue text-gray-400 hover:text-white hover:border-docker-500/40 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-docker-500/50"
+          aria-label="Next slide"
+        >
+          <ArrowRightIcon className="w-5 h-5" />
+        </button>
       </div>
     </div>
   );
