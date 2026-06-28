@@ -2,7 +2,6 @@ import type { HeroStat } from '@/types';
 import { roadmapSteps } from './roadmap';
 import { commandCategories } from './commands';
 import { correctedLab, practiceLab } from './labs';
-import { deploymentGuides } from './deployment';
 
 const totalCommands = commandCategories.reduce(
   (acc, cat) => acc + cat.commands.length,
@@ -23,9 +22,5 @@ export const heroStats: HeroStat[] = [
   {
     label: 'Labs',
     value: totalLabs,
-  },
-  {
-    label: 'Deployment Guides',
-    value: deploymentGuides.length,
   },
 ];
