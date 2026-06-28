@@ -57,7 +57,7 @@ export default function Navbar() {
           className="flex items-center gap-3 group"
           aria-label="Docker Mastery Home"
         >
-          <DockerLogo size={34} className="transition-transform duration-300 group-hover:scale-110" />
+          <DockerLogo size={34} className="transition-transform duration-300 group-hover:scale-110 shrink-0" />
           <span className="text-lg font-bold gradient-text">Docker Mastery</span>
         </Link>
 
