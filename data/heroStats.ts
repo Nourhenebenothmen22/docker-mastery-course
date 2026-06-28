@@ -11,16 +11,7 @@ const totalCommands = commandCategories.reduce(
 const totalLabs = (correctedLab ? 1 : 0) + (practiceLab ? 1 : 0);
 
 export const heroStats: HeroStat[] = [
-  {
-    label: 'Roadmap Steps',
-    value: roadmapSteps.length,
-  },
-  {
-    label: 'Commands',
-    value: `${totalCommands}+`,
-  },
-  {
-    label: 'Labs',
-    value: totalLabs,
-  },
+  { label: 'Roadmap Steps', value: roadmapSteps.length },
+  { label: 'Commands', value: `${totalCommands}+` },
+  { label: 'Labs', value: totalLabs },
 ];
