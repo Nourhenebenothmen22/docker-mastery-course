@@ -17,7 +17,6 @@ export function createPageMetadata({
   ogDescription,
 }: PageSEOParams): Metadata {
   const url = `${siteConfig.url}${path}`;
-  const imageUrl = `${siteConfig.url}/docker-logo.png`;
 
   return {
     title,
@@ -28,7 +27,7 @@ export function createPageMetadata({
       url,
       images: [
         {
-          url: imageUrl,
+          url: '/docker-logo.png',
           width: 1200,
           height: 630,
           alt: `${siteConfig.name} - ${title}`,
@@ -39,7 +38,7 @@ export function createPageMetadata({
       card: 'summary_large_image',
       title: ogTitle ?? `${title} | ${siteConfig.name}`,
       description: ogDescription ?? description,
-      images: [imageUrl],
+      images: ['/docker-logo.png'],
     },
     alternates: {
       canonical: url,
