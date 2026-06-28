@@ -27,17 +27,17 @@ export function createPageMetadata({
       url,
       images: [
         {
-          url: `${siteConfig.url}/docker-logo.png`,
-          width: 1200,
-          height: 630,
-          alt: `${siteConfig.name} - ${title}`,
-        },
-      ],
-    },
-    twitter: {
-      title: ogTitle ?? `${title} | ${siteConfig.name}`,
-      description: ogDescription ?? description,
-      images: [`${siteConfig.url}/docker-logo.png`],
+           url: `${siteConfig.url}/docker-logo.png`,
+           width: 1200,
+           height: 630,
+           alt: `${siteConfig.name} - ${title}`,
+         },
+       ],
+     },
+     twitter: {
+       title: ogTitle ?? `${title} | ${siteConfig.name}`,
+       description: ogDescription ?? description,
+       images: [`${siteConfig.url}/docker-logo.png`],
     },
     alternates: {
       canonical: url,
