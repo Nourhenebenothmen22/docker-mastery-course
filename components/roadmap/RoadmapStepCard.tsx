@@ -33,22 +33,6 @@ export default function RoadmapStepCard({ step, index }: RoadmapStepCardProps) {
               <p className="text-gray-300 text-sm">{step.practice}</p>
             </div>
           )}
-
-          {step.commands.length > 0 && (
-            <div>
-              <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">Commands</span>
-              <div className="space-y-1">
-                {step.commands.map((cmd, i) => (
-                  <code
-                    key={i}
-                    className="block text-xs text-docker-300 bg-dark-800 px-3 py-1.5 rounded border border-dark-600 font-mono"
-                  >
-                    {cmd}
-                  </code>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </div>
 
