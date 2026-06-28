@@ -14,7 +14,6 @@ import {
   ArrowRightIcon,
   CodeIcon,
   CheckCircleIcon,
-  EyeIcon,
   CloudIcon,
 } from '@/data/icons';
 import type { FeatureItem, BenefitItem, CourseCardItem } from '@/types';
