@@ -4,7 +4,6 @@ export const navLinks: NavItem[] = [
   { href: '/', label: 'Home' },
   { href: '/roadmap', label: 'Roadmap' },
   { href: '/commands', label: 'Commands' },
-  { href: '/labs/corrected', label: 'Corrected Lab' },
-  { href: '/labs/practice', label: 'Practice Lab' },
+  { href: '/labs', label: 'Labs' },
   { href: '/deployment', label: 'Deployment' },
 ];
