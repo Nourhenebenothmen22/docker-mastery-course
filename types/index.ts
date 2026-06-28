@@ -93,8 +93,3 @@ export interface HeroStat {
   label: string;
   value: string | number;
 }
-
-export interface DeploymentGuide {
-  title: string;
-  description: string;
-}
