@@ -21,12 +21,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
           cache: npm
       - run: npm ci
       - run: npm run build
         env:
-          REPO_NAME: ${{ github.event.repository.name }}
+          DEPLOY_TARGET: github
       - uses: actions/configure-pages@v4
         with:
           static_site_generator: next
