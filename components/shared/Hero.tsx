@@ -24,11 +24,11 @@ export default function Hero() {
           <div className="text-center md:text-left order-1 md:order-2">
             <h1 className="text-[clamp(2.25rem,5vw,4.5rem)] font-extrabold text-white mb-6 leading-[1.1] tracking-tight text-balance">
               Master Docker{' '}
-              <span className="gradient-text">From Zero to Deployment</span>
+              <span className="gradient-text">From Zero to Production</span>
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-gray-300/90 max-w-xl mb-10 leading-relaxed text-balance">
-              Learn Docker from fundamentals to real-world deployment with commands, labs, roadmap, and professional DevOps practices.
+              Learn Docker from fundamentals to real-world production with commands, labs, roadmap, and professional DevOps practices.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-4 mb-14">
@@ -40,7 +40,7 @@ export default function Hero() {
               </GradientButton>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            <div className="grid grid-cols-3 gap-3 md:gap-4 max-w-lg">
               {heroStats.map((stat) => (
                 <StatsCard key={stat.label} label={stat.label} value={stat.value} />
               ))}
