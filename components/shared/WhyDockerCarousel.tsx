@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { ArrowLeftIcon, ArrowRightIcon } from '@/data/icons';
 import type { BenefitItem } from '@/types';
 
 interface WhyDockerCarouselProps {
@@ -21,6 +22,7 @@ export default function WhyDockerCarousel({ benefits }: WhyDockerCarouselProps) 
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   const maxIndex = Math.max(0, benefits.length - visibleCount);
 
@@ -64,6 +66,19 @@ export default function WhyDockerCarousel({ benefits }: WhyDockerCarouselProps) 
   const goNext = useCallback(() => goTo(currentIndex + 1), [goTo, currentIndex]);
   const goPrev = useCallback(() => goTo(currentIndex - 1), [goTo, currentIndex]);
 
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goPrev();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        goNext();
+      }
+    },
+    [goPrev, goNext]
+  );
+
   const slidePercent = (100 / visibleCount) * currentIndex;
 
   return (
@@ -71,8 +86,13 @@ export default function WhyDockerCarousel({ benefits }: WhyDockerCarouselProps) 
       className="relative"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onKeyDown={handleKeyDown}
+      role="region"
+      aria-label="Why Docker matters, benefit carousel"
+      aria-roledescription="carousel"
+      tabIndex={0}
     >
-      <div className="overflow-hidden rounded-xl">
+      <div className="overflow-hidden rounded-xl" ref={trackRef}>
         <div
           className={cn(
             'flex transition-transform duration-500 ease-in-out',
@@ -89,6 +109,9 @@ export default function WhyDockerCarousel({ benefits }: WhyDockerCarouselProps) 
                 visibleCount === 2 && 'w-[calc(50%-8px)]',
                 visibleCount === 3 && 'w-[calc(33.333%-11px)]'
               )}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`Benefit ${i + 1} of ${benefits.length}`}
             >
               <div className="glass-card p-6 h-full flex flex-col">
                 <div className="w-12 h-12 rounded-full bg-docker-500/20 flex items-center justify-center mb-5 shrink-0">
@@ -106,28 +129,24 @@ export default function WhyDockerCarousel({ benefits }: WhyDockerCarouselProps) 
         onClick={goPrev}
         disabled={currentIndex === 0}
         className={cn(
-          'absolute -left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-dark-700 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:bg-docker-500/20 transition-all duration-200 z-10',
+          'absolute -left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-dark-700 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:bg-docker-500/20 transition-all duration-200 z-10 focus:outline-none focus:ring-2 focus:ring-docker-500/50',
           currentIndex === 0 && 'opacity-30 cursor-not-allowed'
         )}
         aria-label="Previous slide"
       >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
+        <ArrowLeftIcon className="w-5 h-5" />
       </button>
 
       <button
         onClick={goNext}
         disabled={currentIndex >= maxIndex}
         className={cn(
-          'absolute -right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-dark-700 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:bg-docker-500/20 transition-all duration-200 z-10',
+          'absolute -right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-dark-700 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:bg-docker-500/20 transition-all duration-200 z-10 focus:outline-none focus:ring-2 focus:ring-docker-500/50',
           currentIndex >= maxIndex && 'opacity-30 cursor-not-allowed'
         )}
         aria-label="Next slide"
       >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
+        <ArrowRightIcon className="w-5 h-5" />
       </button>
 
       <div className="flex items-center justify-center gap-2 mt-8" role="tablist" aria-label="Carousel indicators">
@@ -136,7 +155,7 @@ export default function WhyDockerCarousel({ benefits }: WhyDockerCarouselProps) 
             key={i}
             onClick={() => goTo(i)}
             className={cn(
-              'w-2.5 h-2.5 rounded-full transition-all duration-300',
+              'w-2.5 h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-docker-500/50',
               i === currentIndex ? 'bg-docker-500 w-8' : 'bg-dark-600 hover:bg-dark-500'
             )}
             aria-label={`Go to slide ${i + 1}`}
