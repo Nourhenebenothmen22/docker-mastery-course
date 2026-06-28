@@ -35,18 +35,18 @@ export const metadata: Metadata = {
     url: '/',
     images: [
       {
-         url: '/docker-logo.png',
-         width: 1200,
-         height: 630,
-         alt: `${siteConfig.name} - Learn Docker Online`,
-       },
-     ],
-   },
-   twitter: {
-     card: 'summary_large_image',
-     title: `${siteConfig.name} - Learn Docker From Zero to Deployment`,
-     description: siteConfig.description,
-     images: ['/docker-logo.png'],
+        url: '/docker-logo.png',
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} - Learn Docker Online`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${siteConfig.name} - Learn Docker From Zero to Deployment`,
+    description: siteConfig.description,
+    images: ['/docker-logo.png'],
   },
   robots: {
     index: true,
