@@ -5,6 +5,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 @layer base {
+  :root {
+    --color-docker-400: #60c4ff;
+    --color-docker-500: #3ba6f7;
+    --color-docker-600: #2490ed;
+    --color-dark-700: #1e293b;
+    --color-dark-800: #0f172a;
+    --color-dark-900: #020617;
+
+    --glass-bg: rgba(15, 23, 42, 0.6);
+    --glass-border: rgba(59, 166, 247, 0.1);
+    --glass-blur: 16px;
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.25rem;
+
+    --transition-fast: 150ms ease;
+    --transition-base: 200ms ease;
+    --transition-slow: 300ms ease;
+  }
+
   body {
     @apply bg-dark-900 text-gray-100 font-sans antialiased;
   }
@@ -24,11 +47,30 @@
 
 @layer components {
   .glass {
-    @apply bg-dark-700/50 backdrop-blur-md border border-white/5 shadow-xl;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-blue {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(59, 166, 247, 0.12);
+    box-shadow: 0 8px 32px rgba(59, 166, 247, 0.06);
   }
 
   .glass-card {
-    @apply glass rounded-xl hover:border-docker-500/20 transition-all duration-300;
+    @apply rounded-xl transition-all duration-300;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(59, 166, 247, 0.2);
+    box-shadow: 0 8px 32px rgba(59, 166, 247, 0.1);
   }
 
   .gradient-text {
