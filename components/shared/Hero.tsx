@@ -10,13 +10,13 @@ export default function Hero() {
     <section className="relative min-h-[calc(100vh-72px)] flex items-center overflow-hidden bg-dark-900">
       <DockerHeroBackground />
 
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(59,166,247,0.12)_0%,transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_80%,rgba(59,166,247,0.06)_0%,transparent_50%)]" />
-        <div className="absolute top-1/3 -left-20 w-[400px] h-[400px] bg-docker-500/8 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/3 -right-20 w-[350px] h-[350px] bg-blue-600/8 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-docker-500/4 rounded-full blur-3xl" />
-        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle,rgba(255,255,255,0.3)_1px,transparent_1px)', backgroundSize: '40px 40px' }} />
+        <div className="absolute top-1/3 -left-40 w-[400px] h-[400px] bg-docker-500/8 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-1/3 -right-40 w-[350px] h-[350px] bg-blue-600/8 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-docker-500/4 rounded-full blur-3xl" />
+        <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle,rgba(255,255,255,0.3)_1px,transparent_1px)', backgroundSize: '40px 40px' }} />
       </div>
 
       <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 py-12 lg:py-16 w-full">
@@ -48,7 +48,7 @@ export default function Hero() {
           </div>
 
           <div className="flex justify-center lg:justify-start order-2 lg:order-1">
-            <div className="glass-card p-6 md:p-8 lg:p-10 rounded-2xl border-docker-500/20 shadow-2xl shadow-docker-500/10 hover:shadow-docker-500/25 transition-all duration-500 animate-float">
+            <div className="glass-blue p-6 md:p-8 lg:p-10 rounded-2xl shadow-2xl shadow-docker-500/10 hover:shadow-docker-500/25 transition-all duration-500 animate-float">
               <div className="relative">
                 <div className="absolute -inset-3 bg-docker-500/5 rounded-full blur-3xl" />
                 <div className="absolute -inset-6 bg-docker-400/3 rounded-full blur-2xl" />
