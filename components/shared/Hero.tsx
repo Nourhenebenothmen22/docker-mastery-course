@@ -19,7 +19,7 @@ export default function Hero() {
         <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle,rgba(255,255,255,0.3)_1px,transparent_1px)', backgroundSize: '40px 40px' }} />
       </div>
 
-      <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 pt-8 lg:pt-12 pb-12 lg:pb-16 w-full">
+      <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 pt-4 lg:pt-8 pb-12 lg:pb-16 w-full">
         <div className="grid lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-14 items-center">
           <div className="text-center lg:text-left order-1 lg:order-2">
             <h1 className="text-[clamp(2rem,4vw,3.5rem)] font-extrabold text-white mb-4 leading-[1.15] tracking-tight text-balance">
@@ -48,7 +48,7 @@ export default function Hero() {
           </div>
 
           <div className="flex justify-center lg:justify-start order-2 lg:order-1">
-            <div className="glass-blue p-6 md:p-8 lg:p-10 rounded-2xl shadow-2xl shadow-docker-500/10 hover:shadow-docker-500/25 transition-all duration-500 animate-float">
+            <div className="glass-blue p-6 md:p-8 lg:p-10 rounded-full aspect-square shadow-2xl shadow-docker-500/10 hover:shadow-docker-500/25 transition-all duration-500 animate-float">
               <div className="relative">
                 <div className="absolute -inset-3 bg-docker-500/5 rounded-full blur-3xl" />
                 <div className="absolute -inset-6 bg-docker-400/3 rounded-full blur-2xl" />
