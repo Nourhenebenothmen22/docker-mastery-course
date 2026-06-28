@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { navLinks } from '@/data/navigation';
@@ -56,9 +57,11 @@ export default function Navbar() {
           className="flex items-center gap-2 group"
           aria-label="Docker Mastery Home"
         >
-          <img
+          <Image
             src="/docker-logo.png"
             alt="Docker logo"
+            width={120}
+            height={120}
             className="w-8 h-8 object-contain transition-transform duration-300 group-hover:scale-110"
           />
           <span className="text-lg font-bold gradient-text">Docker Mastery</span>

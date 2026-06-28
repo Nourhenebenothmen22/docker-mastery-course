@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRightIcon, CodeIcon } from '@/data/icons';
 
 export default function Hero() {
@@ -13,11 +14,13 @@ export default function Hero() {
       <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <div className="animate-fade-in">
           <div className="flex justify-center mb-8">
-            <img
+            <Image
               src="/docker-logo.png"
               alt="Docker logo - official container platform"
+              width={120}
+              height={120}
               className="w-28 h-28 md:w-36 md:h-36 object-contain drop-shadow-2xl animate-float"
-              loading="eager"
+              priority
             />
           </div>
 

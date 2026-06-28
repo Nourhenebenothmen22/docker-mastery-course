@@ -10,8 +10,7 @@ A professional, modern Docker course website built with Next.js, TypeScript, and
 - SEO-optimized with metadata, Open Graph, and Twitter cards
 - Complete Docker roadmap (15 steps)
 - Categorized Docker commands reference
-- Corrected lab with full Node.js containerization
-- Practice lab for hands-on learning
+- Unified labs page with corrected and practice tabs
 - Deployment guide for GitHub Pages and Netlify
 - Static export compatible
 - No backend or database required
@@ -23,8 +22,7 @@ A professional, modern Docker course website built with Next.js, TypeScript, and
 | Home | `/` | Hero section, features, benefits, course structure |
 | Roadmap | `/roadmap` | 15-step Docker learning roadmap |
 | Commands | `/commands` | Categorized Docker commands reference |
-| Corrected Lab | `/labs/corrected` | Full Node.js containerization lab |
-| Practice Lab | `/labs/practice` | Incomplete lab for student practice |
+| Labs | `/labs` | Unified lab page with corrected and practice tabs |
 | Deployment | `/deployment` | GitHub Pages and Netlify deployment guide |
 
 ## Tech Stack
@@ -109,27 +107,41 @@ docker-mastery/
 │   ├── commands/
 │   │   └── page.tsx
 │   ├── labs/
-│   │   ├── corrected/
-│   │   │   └── page.tsx
-│   │   └── practice/
-│   │       └── page.tsx
+│   │   └── page.tsx
 │   └── deployment/
 │       └── page.tsx
 ├── components/
-│   ├── Navbar.tsx          # Sticky blur navbar
-│   ├── Footer.tsx          # Professional footer
-│   ├── Hero.tsx            # Home hero section
-│   ├── SectionTitle.tsx    # Section heading component
-│   ├── FeatureCard.tsx     # Feature card component
-│   ├── CommandCard.tsx     # Command display card
-│   └── CodeBlock.tsx       # Code block with copy
+│   ├── layout/
+│   │   ├── Navbar.tsx      # Sticky blur navbar
+│   │   ├── Footer.tsx      # Professional footer
+│   │   └── Container.tsx   # Centralized container wrapper
+│   ├── shared/
+│   │   ├── Hero.tsx        # Home hero section
+│   │   ├── SectionTitle.tsx # Section heading component
+│   │   ├── FeatureCard.tsx # Feature card component
+│   │   ├── CommandCard.tsx # Command display card
+│   │   ├── CodeBlock.tsx   # Code block with copy
+│   │   ├── PageHeader.tsx  # Page header wrapper
+│   │   └── WhyDockerCarousel.tsx # Responsive benefits carousel
+│   ├── labs/
+│   │   └── LabsTabs.tsx    # Tabbed corrected/practice lab UI
+│   └── roadmap/
+│       └── RoadmapStepCard.tsx # Timeline step card
 ├── data/
+│   ├── site.ts             # Site config (name, url, author)
+│   ├── navigation.ts       # Nav link definitions
+│   ├── icons.tsx           # SVG icon components
 │   ├── roadmap.ts          # Roadmap step definitions
 │   ├── commands.ts         # Commands data
 │   └── labs.ts             # Lab step definitions
 ├── public/
-│   ├── docker-logo.png     # Docker logo
-│   └── docker-logo.png     # Docker logo (SVG)
+│   ├── docker-logo.png     # Docker logo (PNG fallback)
+│   └── docker-logo.png     # Docker logo
+├── lib/
+│   ├── utils.ts            # Utility functions (cn)
+│   └── metadata.ts         # SEO metadata helper
+├── types/
+│   └── index.ts            # Shared TypeScript types
 ├── next.config.js          # Static export config
 ├── netlify.toml            # Netlify config
 ├── tailwind.config.ts      # Tailwind theme

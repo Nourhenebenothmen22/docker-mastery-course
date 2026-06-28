@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { navLinks } from '@/data/navigation';
 import { siteConfig } from '@/data/site';
 import { WhatsAppIcon, LinkedInIcon, GitHubIcon, InstagramIcon } from '@/data/icons';
@@ -17,7 +18,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src="/docker-logo.png" alt="Docker Mastery logo" className="w-8 h-8 object-contain" />
+              <Image src="/docker-logo.png" alt="Docker Mastery logo" width={120} height={120} className="w-8 h-8 object-contain" />
               <span className="text-lg font-bold gradient-text">{siteConfig.name}</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
