@@ -6,7 +6,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: `${siteConfig.name} - Learn Docker From Zero to Deployment`,
+    default: `${siteConfig.name} - Learn Docker From Zero to Production`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     'Docker roadmap',
     'Docker labs',
     'Docker for beginners',
-    'Docker deployment',
+    'Docker production',
     'Docker Next.js course',
     'containerization',
     'devops',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     siteName: siteConfig.name,
-    title: `${siteConfig.name} - Learn Docker From Zero to Deployment`,
+    title: `${siteConfig.name} - Learn Docker From Zero to Production`,
     description: siteConfig.description,
     url: '/',
     images: [
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteConfig.name} - Learn Docker From Zero to Deployment`,
+    title: `${siteConfig.name} - Learn Docker From Zero to Production`,
     description: siteConfig.description,
     images: ['/docker-logo.png'],
   },
