@@ -3,12 +3,6 @@ export interface NavItem {
   href: string;
 }
 
-export interface SocialLink {
-  label: string;
-  href: string;
-  icon: React.ReactNode;
-}
-
 export interface SiteConfig {
   name: string;
   description: string;
@@ -93,9 +87,4 @@ export interface CourseCardItem {
 export interface DockerfileInstruction {
   label: string;
   desc: string;
-}
-
-export interface SectionHeading {
-  title: string;
-  subtitle?: string;
 }
