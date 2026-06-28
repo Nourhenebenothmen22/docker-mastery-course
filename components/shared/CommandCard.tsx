@@ -28,6 +28,13 @@ export default function CommandCard({ command }: CommandCardProps) {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleCopy();
+    }
+  };
+
   return (
     <div className="glass-card p-5 group relative">
       <div className="relative mb-3">
@@ -39,6 +46,7 @@ export default function CommandCard({ command }: CommandCardProps) {
         <button
           type="button"
           onClick={handleCopy}
+          onKeyDown={handleKeyDown}
           className="absolute top-2 right-2 flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-md bg-dark-700 border border-white/10 text-gray-400 hover:text-docker-400 hover:border-docker-500/40 focus:outline-none focus:ring-2 focus:ring-docker-500/50 transition-all duration-200"
           aria-label={copied ? 'Command copied to clipboard' : 'Copy command to clipboard'}
         >
