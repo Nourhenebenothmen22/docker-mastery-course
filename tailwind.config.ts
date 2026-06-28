@@ -69,11 +69,6 @@ const config: Config = {
           '100%': { opacity: '1' },
         },
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-gradient': 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #153454 100%)',
-        'card-gradient': 'linear-gradient(180deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%)',
-      },
     },
   },
   plugins: [],
