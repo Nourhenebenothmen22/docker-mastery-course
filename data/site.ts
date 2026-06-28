@@ -1,17 +1,10 @@
 import type { SiteConfig } from '@/types';
 
-function getSiteUrl(): string {
-  if (process.env.DEPLOY_TARGET === 'github') {
-    return 'https://nourhenebenothmen22.github.io/docker-mastery-course';
-  }
-  return 'https://docker-mastery.vercel.app';
-}
-
 export const siteConfig: SiteConfig = {
   name: 'Docker Mastery',
   description:
     'Master Docker from fundamentals to real-world production. Learn containers, images, Docker Compose, networking, volumes, and CI/CD with hands-on labs.',
-  url: getSiteUrl(),
+  url: 'https://docker-mastery.vercel.app',
   author: {
     name: 'Nourhene Ben Othmen',
     linkedin: 'https://www.linkedin.com/in/nourhene-ben-othmen-dev/',
