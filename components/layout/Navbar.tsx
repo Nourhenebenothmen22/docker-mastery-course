@@ -35,9 +35,9 @@ export default function Navbar() {
 
   const linkClass = (isActive: boolean) =>
     cn(
-      'rounded-lg text-sm font-medium transition-all duration-200',
+      'rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200',
       isActive
-        ? 'text-docker-400 bg-docker-500/10'
+        ? 'text-docker-400 bg-docker-500/10 shadow-sm shadow-docker-500/5'
         : 'text-gray-300 hover:text-white hover:bg-white/5'
     );
 
@@ -47,14 +47,14 @@ export default function Navbar() {
         'sticky top-0 z-50 transition-all duration-300',
         scrolled
           ? 'bg-dark-900/80 backdrop-blur-xl shadow-lg shadow-black/20 border-b border-white/5'
-          : 'bg-transparent'
+          : 'bg-dark-900/50 backdrop-blur-sm border-b border-transparent'
       )}
       role="banner"
     >
       <nav className="container-custom flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
         <Link
           href="/"
-          className="flex items-center gap-2 group"
+          className="flex items-center gap-2.5 group"
           aria-label="Docker Mastery Home"
         >
           <DockerLogo size={32} className="transition-transform duration-300 group-hover:scale-110" />
@@ -66,7 +66,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={cn(linkClass(pathname === link.href), 'px-3 py-2')}
+              className={linkClass(pathname === link.href)}
               aria-current={pathname === link.href ? 'page' : undefined}
             >
               {link.label}

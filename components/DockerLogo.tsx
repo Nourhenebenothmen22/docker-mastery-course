@@ -20,17 +20,23 @@ export default function DockerLogo({
       style={{ width: size, height: size }}
     >
       {showGlow && (
-        <div
-          className="absolute rounded-full bg-docker-500/20 blur-2xl animate-pulse"
-          style={{ width: size * 1.8, height: size * 1.8 }}
-        />
+        <>
+          <div
+            className="absolute rounded-full bg-docker-500/10 blur-3xl animate-pulse"
+            style={{ width: size * 2.5, height: size * 2.5 }}
+          />
+          <div
+            className="absolute rounded-full bg-docker-400/5 blur-2xl"
+            style={{ width: size * 1.5, height: size * 1.5 }}
+          />
+        </>
       )}
       <Image
         src="/docker-logo.png"
         alt="Docker logo"
         width={size}
         height={size}
-        className="object-contain relative z-10"
+        className="object-contain relative z-10 drop-shadow-lg"
         priority={priority}
       />
     </div>
