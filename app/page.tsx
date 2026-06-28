@@ -14,7 +14,6 @@ import {
   ArrowRightIcon,
   CodeIcon,
   CheckCircleIcon,
-  CloudIcon,
 } from '@/data/icons';
 import type { FeatureItem, BenefitItem, CourseCardItem } from '@/types';
 
@@ -46,8 +45,8 @@ const learnItems: FeatureItem[] = [
   },
   {
     icon: <SettingsIcon className="w-6 h-6" />,
-    title: 'Real Labs & Deployment',
-    description: 'Practice with real labs and deploy containers to GitHub Pages and Netlify.',
+    title: 'Real Labs & Projects',
+    description: 'Practice with real labs and build projects using Docker containerization.',
   },
 ];
 
@@ -92,12 +91,6 @@ const coursePages: CourseCardItem[] = [
     title: 'Docker Labs',
     description: 'Hands-on labs: follow the corrected lab or test your skills with the practice lab.',
     icon: <CheckCircleIcon className="w-8 h-8" />,
-  },
-  {
-    href: '/deployment',
-    title: 'Deployment Guide',
-    description: 'Learn to deploy this Next.js site to GitHub Pages and Netlify.',
-    icon: <CloudIcon className="w-8 h-8" />,
   },
 ];
 
