@@ -4,17 +4,8 @@ import PageHeader from '@/components/shared/PageHeader';
 import CommandCard from '@/components/shared/CommandCard';
 import CodeBlock from '@/components/shared/CodeBlock';
 import { commandCategories } from '@/data/commands';
+import { dockerfileInstructions } from '@/data/dockerfileInstructions';
 import { createPageMetadata } from '@/lib/metadata';
-import type { DockerfileInstruction } from '@/types';
-
-const dockerfileInstructions: DockerfileInstruction[] = [
-  { label: 'FROM', desc: 'Base image (Node.js on Alpine Linux)' },
-  { label: 'WORKDIR', desc: 'Set working directory inside container' },
-  { label: 'COPY', desc: 'Copy files from host to container' },
-  { label: 'RUN', desc: 'Execute commands during build' },
-  { label: 'EXPOSE', desc: 'Document which port the app uses' },
-  { label: 'CMD', desc: 'Default command when container starts' },
-];
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Docker Commands',
@@ -44,7 +35,7 @@ export default function CommandsPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {category.commands.map((cmd, i) => (
-                  <CommandCard key={i} command={cmd} />
+                  <CommandCard key={`${category.title}-${i}`} command={cmd} />
                 ))}
               </div>
             </section>
