@@ -5,4 +5,5 @@ export const navLinks: NavItem[] = [
   { href: '/roadmap', label: 'Roadmap' },
   { href: '/commands', label: 'Commands' },
   { href: '/labs', label: 'Labs' },
+  { href: '/deployment', label: 'Deployment' },
 ];
