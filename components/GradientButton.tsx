@@ -25,7 +25,7 @@ export default function GradientButton({
         variant === 'primary' &&
           'bg-gradient-to-r from-docker-500 to-blue-600 text-white shadow-lg shadow-docker-500/25 hover:shadow-docker-500/50 hover:from-docker-400 hover:to-blue-500 active:scale-[0.97]',
         variant === 'secondary' &&
-          'border border-docker-500/30 text-docker-400 bg-dark-800/50 backdrop-blur-sm hover:bg-docker-500/10 hover:border-docker-500/50 active:scale-[0.97]',
+          'border border-docker-500/30 text-docker-400 glass-blue hover:bg-docker-500/10 hover:border-docker-500/50 active:scale-[0.97]',
         className
       )}
     >
