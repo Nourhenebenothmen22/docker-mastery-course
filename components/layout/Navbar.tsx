@@ -46,8 +46,8 @@ export default function Navbar() {
       className={cn(
         'sticky top-0 z-50 transition-all duration-300 h-[72px]',
         scrolled
-          ? 'bg-dark-900/80 backdrop-blur-xl shadow-lg shadow-black/20 border-b border-white/10'
-          : 'bg-dark-900/70 backdrop-blur-xl border-b border-transparent'
+          ? 'glass-blue shadow-lg shadow-black/20 border-b border-docker-500/15'
+          : 'glass-blue border-b border-transparent'
       )}
       role="banner"
     >
@@ -87,7 +87,7 @@ export default function Navbar() {
       </nav>
 
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 top-[72px] z-40 bg-dark-900/90 backdrop-blur-xl" onClick={() => setMobileOpen(false)}>
+        <div className="lg:hidden fixed inset-0 top-[72px] z-40 bg-dark-900/80 backdrop-blur-xl" onClick={() => setMobileOpen(false)}>
           <div className="container-custom px-4 py-6 flex flex-col gap-2" onClick={(e) => e.stopPropagation()}>
             {navLinks.map((link) => (
               <Link
