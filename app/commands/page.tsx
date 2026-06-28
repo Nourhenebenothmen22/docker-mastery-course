@@ -82,8 +82,7 @@ CMD ["npm", "run", "dev"]`}
           <CodeBlock
             title="docker-compose.yml"
             language="yaml"
-            code={`version: '3.8'
-services:
+            code={`services:
   web:
     build: .
     ports:
